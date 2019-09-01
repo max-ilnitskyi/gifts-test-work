@@ -27,4 +27,4 @@ Uses concurrently package to runs `npm run server` and `npm run client` commands
 
 ### Client
 
-You can see in client/README.md
+You can see in client/README.md .
