@@ -1,8 +1,8 @@
 <template>
-  <nav class="NavMenu">
-    <ul>
-      <li v-for="link in links" :key="link.name">
-        <router-link class="sss" :to="link.href">{{ link.name }}</router-link>
+  <nav class="nav-menu">
+    <ul class="nav-menu__list">
+      <li class="nav-menu__item" v-for="link in links" :key="link.name">
+        <router-link class="nav-menu__link" :to="link.href">{{ link.name }}</router-link>
       </li>
     </ul>
   </nav>
@@ -24,4 +24,29 @@ export default {
 </script>
 
 <style lang="scss">
+.nav-menu__list {
+  display: flex;
+}
+
+.nav-menu__link {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  .nav-menu__item:first-child & {
+    padding-left: 0px;
+  }
+
+  &:hover {
+    color: $secondary-light-color;
+  }
+}
 </style>

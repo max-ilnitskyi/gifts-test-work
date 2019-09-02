@@ -2,7 +2,7 @@
   <div id="app">
     <Layout>
       <template v-slot:header>
-        <NavMenu></NavMenu>
+        <Header></Header>
       </template>
 
       <template v-slot:default>
@@ -14,12 +14,18 @@
 
 <script>
 import Layout from '@/components/Layout';
-import NavMenu from '@/components/NavMenu';
+import Header from '@/components/Header';
 
 export default {
   components: {
-    NavMenu,
+    Header,
     Layout
   }
 };
 </script>
+
+<style lang="scss">
+#app {
+  height: 100%;
+}
+</style>
