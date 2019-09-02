@@ -21,6 +21,8 @@ $header-height: 60px;
 
 .layout {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 body,
@@ -35,7 +37,7 @@ html {
   top: 0;
 
   background-color: $primary-color;
-  border-bottom: 3px solid $secondary-color;
+  border-bottom: 3px solid lighten($secondary-color, 20%);
 }
 
 .layout__page {
@@ -43,7 +45,8 @@ html {
   $second-color: lighten($primary-color, 10%);
   $pattern-size: 40px;
 
-  height: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
 
   border-bottom: 3px solid darken($secondary-color, 15%);
   background-color: $first-color;
@@ -79,9 +82,5 @@ html {
 // Mainly for vertical content centering
 .layout__container_header {
   padding-top: 8px;
-}
-
-.layout__page-main {
-  height: 100%;
 }
 </style>
