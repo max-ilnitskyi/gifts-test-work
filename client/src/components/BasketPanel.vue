@@ -9,7 +9,7 @@
       <BasketIcon class="basket-panel__icon"></BasketIcon>
       <NumDisplay
         class="basket-panel__num"
-        :currentNum="selectedNum"
+        :currentNum="selectedAmount"
       ></NumDisplay>
     </router-link>
   </div>
@@ -24,15 +24,18 @@ import { linkBasket } from '@/data';
 export default {
   data: function() {
     return {
-      linkBasket,
-      selectedNum: 2 // mock, value must be injected from store
+      linkBasket
     };
   },
   computed: {
     mainClasses() {
       return {
-        'basket-panel_filled': Boolean(this.selectedNum)
+        'basket-panel_filled': Boolean(this.selectedAmount)
       };
+    },
+    // Get total amount of selected items from store
+    selectedAmount() {
+      return this.$store.getters['gifts/selectedTotalAmount'];
     }
   },
   components: {

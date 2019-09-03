@@ -44,11 +44,6 @@ import NumInput from '@/components/NumInput';
 export default {
   props: ['gift'],
   components: { NumInput },
-  data: function() {
-    return {
-      amount: 1 // mock
-    };
-  },
   computed: {
     imgAlt() {
       return `Image of ${this.gift.name}`;
@@ -57,20 +52,35 @@ export default {
       return this.gift.price + '$';
     },
     showButton() {
-      // mock
       return this.amount === 0;
+    },
+    // Takes current selected amount from store
+    amount() {
+      const amountById = this.$store.state.gifts.selectedGiftsAmountById;
+      const currentId = this.gift.id;
+
+      if (amountById[currentId] === undefined) {
+        return 0;
+      }
+
+      return amountById[currentId];
     }
   },
   methods: {
     onBuyClick() {
-      // mock
       if (this.amount >= 1) return;
-      this.amount = 1;
+      this.setAmount(1);
     },
     onAmountChange(newNum) {
       if (newNum < 0) return;
-      // mock
-      this.amount = newNum;
+      this.setAmount(newNum);
+    },
+    // Set new amount to store
+    setAmount(amount) {
+      this.$store.dispatch('gifts/trySetSelectedAmount', {
+        id: this.gift.id,
+        amount
+      });
     }
   }
 };
