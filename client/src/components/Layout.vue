@@ -17,6 +17,9 @@
 </template>
 
 <style lang="scss">
+// Horizontal indents affect variables $content-min-width and $content-max-width
+// So those variables must be corrected if indends are added or removed
+
 $header-height: 60px;
 
 .layout {
@@ -32,6 +35,7 @@ html {
 
 .layout__header {
   position: fixed;
+  z-index: 1000;
   width: 100%;
   height: $header-height;
   top: 0;
@@ -49,6 +53,8 @@ html {
   flex-grow: 1;
 
   border-bottom: 3px solid darken($secondary-color, 15%);
+
+  // Background settings to make strips
   background-color: $first-color;
   background-size: $pattern-size $pattern-size;
   background-image: linear-gradient(
@@ -64,9 +70,13 @@ html {
 }
 
 .layout__container {
-  max-width: 770px;
+  max-width: $conteiner-max-width;
+  min-width: $conteiner-min-width;
   margin-left: auto;
   margin-right: auto;
+
+  // This indents affect variables $content-min-width and $content-max-width
+  // So those variables must be corrected if indends are added or removed
   padding-left: $standart-indent;
   padding-right: $standart-indent;
 }

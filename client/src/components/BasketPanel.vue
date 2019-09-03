@@ -1,8 +1,16 @@
 <template>
   <div class="basket-panel" :class="mainClasses">
-    <router-link title="Go to basket" class="basket-panel__link" :to="linkBasket.href">
+    <router-link
+      aria-label="Link to basket"
+      title="Go to basket"
+      class="basket-panel__link"
+      :to="linkBasket.href"
+    >
       <BasketIcon class="basket-panel__icon"></BasketIcon>
-      <NumDisplay class="basket-panel__num" :currentNum="selectedNum"></NumDisplay>
+      <NumDisplay
+        class="basket-panel__num"
+        :currentNum="selectedNum"
+      ></NumDisplay>
     </router-link>
   </div>
 </template>
@@ -17,7 +25,7 @@ export default {
   data: function() {
     return {
       linkBasket,
-      selectedNum: 2
+      selectedNum: 2 // mock, value must be injected from store
     };
   },
   computed: {

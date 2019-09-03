@@ -5,3 +5,8 @@ $secondary-light-color: #afbeff;
 $action-color: #7def6e;
 
 $standart-indent: 15px;
+$conteiner-min-width: 320px;
+$conteiner-max-width: 840px;
+
+$content-min-width: 320px - ($standart-indent * 2);
+$content-max-width: $conteiner-max-width - ($standart-indent * 2);
