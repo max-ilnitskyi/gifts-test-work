@@ -68,14 +68,7 @@ export default {
     },
     // Takes current selected amount from store
     amount() {
-      const amountById = this.$store.state.gifts.selectedGiftsAmountById;
-      const currentId = this.gift.id;
-
-      if (amountById[currentId] === undefined) {
-        return 0;
-      }
-
-      return amountById[currentId];
+      return this.$store.getters['gifts/selectedAmountById'](this.gift.id);
     },
     showRemoveButton() {
       return this.amount > 0 && this.withRemoveButton;

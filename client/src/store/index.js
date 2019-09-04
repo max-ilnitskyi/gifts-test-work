@@ -13,7 +13,7 @@ export default new Vuex.Store({
   plugins: [
     createPersistedState({
       storage: window.sessionStorage,
-      paths: ['gifts.selectedGiftsAmountById']
+      paths: ['gifts.selectedGiftsStateById']
     })
   ]
 });
