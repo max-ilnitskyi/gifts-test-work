@@ -53,24 +53,24 @@ export default {
     },
     // Returns all selected items by update time
     selectedGiftsList(state, getters) {
-      const selectedListWithUpTime = [];
+      const selectedListWithCreatedTime = [];
 
       for (const giftId in state.selectedGiftsStateById) {
         const selectedGift = getters.giftsById[giftId];
 
         if (selectedGift) {
-          selectedListWithUpTime.push({
+          selectedListWithCreatedTime.push({
             gift: selectedGift,
             createdAt: state.selectedGiftsStateById[giftId].createdAt
           });
         }
       }
 
-      selectedListWithUpTime.sort((a, b) =>
+      selectedListWithCreatedTime.sort((a, b) =>
         a.createdAt < b.createdAt ? 1 : -1
       );
 
-      const selectedList = selectedListWithUpTime.map(item => item.gift);
+      const selectedList = selectedListWithCreatedTime.map(item => item.gift);
 
       return selectedList;
     }
