@@ -15,6 +15,9 @@ import GiftsListBasket from '@/components/GiftsListBasket';
 import Total from '@/components/Total';
 
 export default {
+  page: {
+    title: 'Basket'
+  },
   components: {
     GiftsListBasket,
     Total
