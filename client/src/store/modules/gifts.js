@@ -53,6 +53,8 @@ export default {
         if (selectedGift) selectedList.push(selectedGift);
       }
 
+      selectedList.reverse();
+
       return selectedList;
     }
   },
