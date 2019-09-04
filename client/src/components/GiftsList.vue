@@ -9,24 +9,20 @@
 <script>
 import Gift from '@/components/Gift';
 
-import { mockGiftsData } from '@/data';
-
 export default {
-  data: function() {
-    // mock
-    return {
-      giftsList: mockGiftsData
-    };
-  },
   components: {
     Gift
+  },
+  computed: {
+    giftsList() {
+      return this.$store.state.gifts.giftsList;
+    }
   }
 };
 </script>
 
 <style lang="scss">
 $list-indent: $standart-indent;
-$item-width: 250px;
 
 .gifts-list {
   display: flex;

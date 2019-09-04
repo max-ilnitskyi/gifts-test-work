@@ -30,7 +30,19 @@ export default {
 
       return totalAmount;
     },
-    // TODO: total cost
+    // Returns total cost of selected items
+    totalCost(state, getters) {
+      let cost = 0;
+
+      for (const giftId in state.selectedGiftsAmountById) {
+        const selectedGift = getters.giftsById[giftId];
+
+        if (selectedGift) {
+          cost += selectedGift.price * state.selectedGiftsAmountById[giftId];
+        }
+      }
+      return cost;
+    },
     // Returns all selected items
     selectedGiftsList(state, getters) {
       const selectedList = [];

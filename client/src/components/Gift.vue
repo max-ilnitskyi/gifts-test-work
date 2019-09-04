@@ -12,14 +12,14 @@
         <div class="gift__price-amount">{{ properPrice }}</div>
       </div>
       <div class="gift__buy-wrap">
-        <button
-          class="gift__buy-button"
+        <Button
+          class="gift__buy-button action"
           type="button"
           v-if="showButton"
           @click="onBuyClick"
         >
-          Buy
-        </button>
+          Add
+        </Button>
         <NumInput
           class="gift__buy-input"
           :currentNum="amount"
@@ -35,15 +35,27 @@
         <span>{{ gift.description }}</span>
       </p>
     </div>
+
+    <button
+      v-show="showRemoveButton"
+      class="gift__remove-button"
+      type="button"
+      @click="onRemoveClick"
+      aria-label="Remove from basket completely"
+      title="Remove from basket completely"
+    >
+      x
+    </button>
   </article>
 </template>
 
 <script>
 import NumInput from '@/components/NumInput';
+import Button from '@/components/Button';
 
 export default {
-  props: ['gift'],
-  components: { NumInput },
+  props: ['gift', 'withRemoveButton'],
+  components: { NumInput, Button },
   computed: {
     imgAlt() {
       return `Image of ${this.gift.name}`;
@@ -64,16 +76,23 @@ export default {
       }
 
       return amountById[currentId];
+    },
+    showRemoveButton() {
+      return this.amount > 0 && this.withRemoveButton;
     }
   },
   methods: {
     onBuyClick() {
+      // With click on button can be added only one item
       if (this.amount >= 1) return;
       this.setAmount(1);
     },
     onAmountChange(newNum) {
       if (newNum < 0) return;
       this.setAmount(newNum);
+    },
+    onRemoveClick() {
+      this.setAmount(0);
     },
     // Set new amount to store
     setAmount(amount) {
@@ -140,46 +159,40 @@ export default {
   font-size: 14px;
 }
 
-.gift__button-link-wrap {
-  margin-left: auto;
-}
-
 .gift__buy-wrap {
   margin-top: 5px;
 }
 
-.gift__buy-button {
-  $main-color: darken($action-color, 20%);
-  $second-color: #fff;
-
-  display: block;
-  padding-right: 0.5em;
-  padding-left: 0.5em;
-  padding-top: 0;
-  padding-bottom: 0;
-
-  font-family: inherit;
-  font-size: 20px;
-  line-height: 1.5;
-  font-weight: 600;
-  text-align: center;
-  /* border-radius: 0.25em; */
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.1s;
-
-  color: $second-color;
-  border: 2px solid $second-color;
-  background-color: $main-color;
-
-  &:hover {
-    color: $main-color;
-    background-color: $second-color;
-    border: 2px solid $main-color;
-  }
-}
-
 .gift__buy-input {
   width: 50px;
+}
+
+.gift__buy-button {
+  font-size: 20px;
+}
+
+.gift__remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  padding: 2px 5px;
+
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  transition: 0.1s;
+
+  color: grey;
+
+  &:hover {
+    color: #000;
+  }
 }
 </style>
