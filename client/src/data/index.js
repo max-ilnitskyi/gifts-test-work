@@ -1,7 +1,7 @@
 export const linkMain = { name: 'Main', href: '/' };
 export const linkBasket = { name: 'Basket', href: '/basket' };
 
-export const navMenuLinks = [linkMain, linkBasket];
+export const navMenuLinks = [linkMain];
 
 export const mockGiftsData = [
   {
