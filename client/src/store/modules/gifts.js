@@ -85,6 +85,9 @@ export default {
 
       // Set new or existing prop
       Vue.set(state.selectedGiftsStateById, id, { amount, createdAt });
+    },
+    clearSelected(state) {
+      state.selectedGiftsStateById = {};
     }
   },
   actions: {
